@@ -11,6 +11,7 @@ public class PanelPrincipal extends JPanel {
     private PanelExpendedor expPanel;
     private Expendedor exp;
     private int saldo=0;
+    private int vuelto=0;
 
     public PanelPrincipal() {
         setBackground(Color.WHITE);
@@ -38,7 +39,8 @@ public class PanelPrincipal extends JPanel {
                     return;
                 }
                 exp.comprarProducto(new Moneda1500(), tipo);
-                saldo -= precio;
+                vuelto =saldo-precio;
+                saldo =0;
                 repaint();
                 JOptionPane.showMessageDialog(this, "Producto Comprado");
             } catch (PagoInsuficienteException ex){
@@ -68,7 +70,7 @@ public class PanelPrincipal extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        expPanel.dibujar(g,saldo);
+        expPanel.dibujar(g,saldo,vuelto);
         com.dibujar(g);
     }
 }
