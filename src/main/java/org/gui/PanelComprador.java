@@ -1,14 +1,18 @@
 package org.gui;
 
+import org.logica.Expendedor;
+
 import java.awt.*;
 
 public class PanelComprador {
     private int x;
     private int y;
+    private Expendedor exp;
 
-    public PanelComprador(int x, int y) {
+    public PanelComprador(int x, int y, Expendedor exp) {
         this.x = x;
         this.y = y;
+        this.exp = exp;
     }
 
     public void dibujar(Graphics g) {
