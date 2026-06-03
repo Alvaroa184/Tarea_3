@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 import java.util.Scanner;
 
 /**

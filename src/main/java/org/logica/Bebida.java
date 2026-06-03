@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Subclase abstracta que representa los productos de tipo bebida.

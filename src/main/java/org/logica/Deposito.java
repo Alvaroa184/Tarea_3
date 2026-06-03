@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 import java.util.ArrayList;
 
@@ -35,4 +35,11 @@ public class Deposito<T> {
             return null;
         }
     }
+    public int size(){
+        return lista.size();
+    }
+    public T getElemento(int i){
+        return lista.get(i);
+    }
+
 }

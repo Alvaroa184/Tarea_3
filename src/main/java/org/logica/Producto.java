@@ -1,10 +1,11 @@
-package org.example;
+package org.logica;
 
 /**
  * Clase abstracta que define la estructura básica de cualquier producto.
  */
 public abstract class Producto {
-
+    private static int registro= 2000;
+    private int serie;
     private TipoProducto tipo;
 
     /**
@@ -13,8 +14,11 @@ public abstract class Producto {
      */
     public Producto(TipoProducto tipo) {
         this.tipo = tipo;
+        this.serie = registro++;
     }
-
+    public int getSerie() {
+        return serie;
+    }
     /**
      * Método abstracto que tiene que ser implementado para devolver el nombre del sabor.
      * @return Un string con el nombre del producto.

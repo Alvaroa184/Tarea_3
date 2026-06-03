@@ -1,9 +1,8 @@
 package org.gui;
 
-import javax.swing.*;
 import java.awt.*;
 
-public class PanelComprador extends JPanel {
+public class PanelComprador {
     private int x;
     private int y;
 
@@ -12,8 +11,11 @@ public class PanelComprador extends JPanel {
         this.y = y;
     }
 
-    public void paintComponent(Graphics g) {
+    public void dibujar(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(this.x, this.y, 400, 600);
+        g.fillRect(x, y, 400, 600);
+
+        g.setColor(Color.WHITE);
+        g.drawString("COMPRADOR", x + 140, y + 30);
     }
 }

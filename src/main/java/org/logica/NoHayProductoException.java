@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Excepción lanzada cuando el depósito solicitado no tiene stock disponible.

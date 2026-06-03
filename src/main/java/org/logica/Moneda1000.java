@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Subclase que representa una moneda con un valor de 1000.

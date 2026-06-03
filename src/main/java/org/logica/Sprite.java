@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Subclase que representa el producto Sprite.

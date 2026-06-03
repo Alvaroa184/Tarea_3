@@ -1,10 +1,10 @@
-package org.example;
+package org.logica;
 
 /**
  * Molde de una maquina expendedora que guarda productos en depositos.
  * Procesa el pago y vuelto de cada venta.
  */
-class Expendedor {
+public class Expendedor {
 
     private Deposito<Producto> depositoCoca;
     private Deposito<Producto> depositoSprite;
@@ -12,6 +12,8 @@ class Expendedor {
     private Deposito<Producto> depositoSnickers;
     private Deposito<Producto> depositoSuper8;
     private Deposito<Moneda> depositoVuelto;
+    private Producto productoComprado;
+    private Deposito<Moneda> depositoCompra;
 
     /**
      * Crea un expendedor con una cantidad inicial de productos en cada deposito.
@@ -24,6 +26,8 @@ class Expendedor {
         depositoSnickers = new Deposito<>();
         depositoSuper8 = new Deposito<>();
         depositoVuelto = new Deposito<>();
+        productoComprado= null;
+        depositoCompra = new Deposito<>();
 
         for (int i = 0; i < numProductos; i++) {
             depositoCoca.add(new CocaCola());
@@ -44,7 +48,7 @@ class Expendedor {
      * @throws NoHayProductoException Si no hay stock disponible.
      * @throws PagoInsuficienteException Si el valor de la moneda no alcanza a pagar el valor del producto.
      */
-    public Producto comprarProducto(Moneda moneda, TipoProducto tipo)
+    public void comprarProducto(Moneda moneda, TipoProducto tipo)
             throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
 
 
@@ -83,8 +87,18 @@ class Expendedor {
             depositoVuelto.add(new Moneda100());
             diferencia -= 100;
         }
+        productoComprado =producto;
+        depositoCompra.add(moneda);
 
-        return producto;
+        return ;
+    }
+    public Producto getProducto() {
+        Producto elegido= productoComprado;
+        productoComprado =null;
+        return elegido;
+    }
+    public Moneda getMoneda() {
+        return depositoCompra.get();
     }
 
     /**
@@ -93,5 +107,33 @@ class Expendedor {
      */
     public Moneda getVuelto() {
         return depositoVuelto.get();
+    }
+
+    public Deposito<Moneda> getDepositoCompra() {
+        return depositoCompra;
+    }
+
+    public Deposito<Moneda> getDepositoVuelto() {
+        return depositoVuelto;
+    }
+    public Deposito<Producto> getDepositoCoca() {
+        return depositoCoca;
+    }
+    public Deposito<Producto> getDepositoSprite() {
+        return depositoSprite;
+    }
+    public Deposito<Producto> getDepositoFanta() {
+        return depositoFanta;
+    }
+    public Deposito<Producto> getDepositoSuper8() {
+        return depositoSuper8;
+    }
+
+    public Deposito<Producto> getDepositoSnickers() {
+        return depositoSnickers;
+    }
+
+    public Producto getProductoComprado() {
+        return productoComprado;
     }
 }

@@ -1,10 +1,10 @@
-package org.example;
+package org.logica;
 
 /**
  * Clase abstracta que define el comportamiento básico de una moneda.
  * Implementa la interfaz Comparable para permitir el ordenamiento automático basado en su valor.
  */
-abstract class Moneda implements Comparable<Moneda> {
+abstract public class Moneda implements Comparable<Moneda> {
     private static int registro = 1000;
     private int serie;
 

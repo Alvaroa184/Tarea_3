@@ -1,9 +1,9 @@
-package org.example;
+package org.logica;
 
 /**
  * Simula a un cliente interactuando con la máquina expendedora, ademas de guardar el valor del vuelto.
  */
-class Comprador {
+public class Comprador {
     private int vuelto;
     private String sonido;
 
@@ -19,7 +19,9 @@ class Comprador {
     public Comprador(Moneda m, TipoProducto tipo, Expendedor exp)
             throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
 
-        Producto p = exp.comprarProducto(m, tipo);
+        exp.comprarProducto(m, tipo);
+
+        Producto p = exp.getProducto();
 
         if (p != null) {
             sonido = p.getSabor();

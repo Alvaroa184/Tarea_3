@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Excepción lanzada cuando el pago ingresado es menor al valor del producto.

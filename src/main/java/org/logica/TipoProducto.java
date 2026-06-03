@@ -1,4 +1,4 @@
-package org.example;
+package org.logica;
 
 /**
  * Define los productos disponibles en la máquina y sus respectivos precios.
