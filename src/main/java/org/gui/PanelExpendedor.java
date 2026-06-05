@@ -3,6 +3,10 @@ import javax.swing.*;
 import java.awt.*;
 import org.logica.Expendedor;
 
+/**
+ * Panel gráfico que representa al expendedor en la interfaz.
+ * Muestra los depósitos de productos, monedas y el área de entrega.
+ */
 public class PanelExpendedor {
     private int x;
     private int y;
@@ -16,6 +20,12 @@ public class PanelExpendedor {
     private Image super8Img;
     private Image moneda500Img;
 
+    /**
+     * Constructor del PanelExpendedor.
+     * @param x coordenada x del panel
+     * @param y coordenada y del panel
+     * @param exp referencia al expendedor
+     */
     public PanelExpendedor(int x, int y,Expendedor exp) {
         this.x = x;
         this.y = y;
@@ -73,6 +83,12 @@ public class PanelExpendedor {
         }
     }
 
+    /**
+     * Dibuja el expendedor con sus depósitos y monedas.
+     * @param g contexto gráfico
+     * @param saldo saldo actual
+     * @param vuelto vuelto disponible
+     */
     public void dibujar(Graphics g, int saldo,int vuelto) {
         g.setColor(Color.RED);
         g.fillRect(x, y, 400, 600);

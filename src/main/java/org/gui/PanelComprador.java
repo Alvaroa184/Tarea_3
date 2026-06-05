@@ -5,6 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+/**
+ * Panel gráfico que representa al comprador en la interfaz.
+ * Muestra el monedero y el inventario de productos del comprador.
+ */
 public class PanelComprador {
     private int x;
     private int y;
@@ -17,6 +21,12 @@ public class PanelComprador {
     private Image super8Img;
     private Image moneda500Img;
 
+    /**
+     * Constructor del PanelComprador.
+     * @param x coordenada x del panel
+     * @param y coordenada y del panel
+     * @param exp referencia al expendedor
+     */
     public PanelComprador(int x, int y, Expendedor exp) {
         this.x = x;
         this.y = y;
@@ -59,6 +69,12 @@ public class PanelComprador {
         }
     }
 
+    /**
+     * Dibuja el comprador con su monedero e inventario.
+     * @param g contexto gráfico
+     * @param saldo saldo actual del comprador
+     * @param inventario lista de productos del comprador
+     */
     public void dibujar(Graphics g, int saldo, ArrayList<String> inventario) {
         g.setColor(Color.BLUE);
         g.fillRect(x, y, 400, 600);

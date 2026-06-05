@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
+/**
+ * Panel principal de la interfaz gráfica.
+ * Contiene el PanelExpendedor y el PanelComprador y gestiona los eventos de compra.
+ */
 public class PanelPrincipal extends JPanel {
     private PanelComprador com;
     private PanelExpendedor expPanel;
@@ -15,6 +19,9 @@ public class PanelPrincipal extends JPanel {
     private int vuelto=0;
     private ArrayList<String>inventario =new ArrayList<>();
 
+    /**
+     * Constructor que inicializa el panel con el expendedor y comprador.
+     */
     public PanelPrincipal() {
         setBackground(Color.WHITE);
         exp =new Expendedor(6);
@@ -70,6 +77,10 @@ public class PanelPrincipal extends JPanel {
         return boton;
     }
 
+    /**
+     * Dibuja todos los componentes gráficos de la interfaz.
+     * @param g contexto gráfico
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
