@@ -39,7 +39,7 @@ public class PanelExpendedor {
         moneda500Img = new ImageIcon("src/main/java/org/gui/moneda500.png").getImage();
     }
     private void dibujardeposito(Graphics g, String nombre, Image img,int cantidad,int posicion_y) {
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawRect(x+20,y+posicion_y,170,55);
         g.drawString(nombre,x+25,y+posicion_y+15);
         for (int i = 0; i<cantidad; i++) {
@@ -92,14 +92,15 @@ public class PanelExpendedor {
     public void dibujar(Graphics g, int saldo,int vuelto) {
         g.setColor(Color.RED);
         g.fillRect(x, y, 400, 600);
-        g.setColor(Color.WHITE);
-        g.drawRect(x, y, 450, 600);
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, 400, 600);
         g.drawString("EXPENDEDOR", x + 140, y + 30);
-        g.drawString("CocaCola:"+exp.getDepositoCoca().size(),x+30,y+80);
-        g.drawString("Sprite:"+exp.getDepositoSprite().size(),x+30,y+110);
-        g.drawString("Fanta:"+exp.getDepositoFanta().size(),x+30,y+140);
-        g.drawString("Snicker:"+exp.getDepositoSnickers().size(),x+30,y+170);
-        g.drawString("Super8:"+exp.getDepositoSuper8().size(),x+30,y+200);
+        g.drawString("Stock de productos", x+30, y+60);
+        g.drawString("CocaCola: "+exp.getDepositoCoca().size(),x+30,y+90);
+        g.drawString("Sprite: "+exp.getDepositoSprite().size(),x+30,y+115);
+        g.drawString("Fanta: "+exp.getDepositoFanta().size(),x+30,y+140);
+        g.drawString("Snicker: "+exp.getDepositoSnickers().size(),x+30,y+165);
+        g.drawString("Super8: "+exp.getDepositoSuper8().size(),x+30,y+190);
         g.drawString("Saldo:  $"+ saldo,x+250,y+80);
         g.drawString("Vuelto: $" + vuelto, x + 250, y + 110);
         g.drawString("Monedas vuelto:",x+250,y+140);
@@ -108,7 +109,7 @@ public class PanelExpendedor {
         int monedas100 = resto / 100;
         dibujarMonedas(g, moneda500Img, monedas500, x + 250, y + 155);
         dibujarMonedas(g, moneda100Img, monedas100, x + 250, y + 220);
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawRect(x + 220, y + 380, 160, 140);
         g.drawString("Entrega", x + 270, y + 400);
 
