@@ -2,8 +2,15 @@ package org.gui;
 
 import javax.swing.*;
 
+/**
+ * Ventana principal de la aplicación.
+ * Crea y muestra la interfaz gráfica del expendedor.
+ */
 public class Ventana extends JFrame {
 
+    /**
+     * Constructor que configura y muestra la ventana principal.
+     */
     public Ventana() {
         setTitle("Expendedor");
         setSize(1200, 800);
