@@ -4,7 +4,8 @@ import org.logica.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.nio.file.NoSuchFileException;
+import java.awt.event.*;
+import java.util.*;
 
 public class PanelPrincipal extends JPanel {
     private PanelComprador com;
@@ -12,6 +13,7 @@ public class PanelPrincipal extends JPanel {
     private Expendedor exp;
     private int saldo=0;
     private int vuelto=0;
+    private ArrayList<String>inventario =new ArrayList<>();
 
     public PanelPrincipal() {
         setBackground(Color.WHITE);
@@ -39,6 +41,7 @@ public class PanelPrincipal extends JPanel {
                     return;
                 }
                 exp.comprarProducto(new Moneda1500(), tipo);
+                inventario.add(nombre);
                 vuelto =saldo-precio;
                 saldo =0;
                 repaint();
@@ -71,6 +74,6 @@ public class PanelPrincipal extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         expPanel.dibujar(g,saldo,vuelto);
-        com.dibujar(g);
+        com.dibujar(g,saldo,inventario);
     }
 }
