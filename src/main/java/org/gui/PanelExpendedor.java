@@ -118,10 +118,10 @@ public class PanelExpendedor {
             dibujarProducto(g, nombre, imgProducto, x + 235, y + 405);
         }
 
-        dibujardeposito(g, "CocaCola", cocaImg, exp.getDepositoCoca().size(), 230);
-        dibujardeposito(g, "Sprite", spriteImg, exp.getDepositoSprite().size(), 290);
-        dibujardeposito(g, "Fanta", fantaImg, exp.getDepositoFanta().size(), 350);
-        dibujardeposito(g, "Snicker", snickersImg, exp.getDepositoSnickers().size(), 410);
-        dibujardeposito(g, "Super8", super8Img, exp.getDepositoSuper8().size(), 470);
+        dibujardeposito(g, "CocaCola $1400", cocaImg, exp.getDepositoCoca().size(), 230);
+        dibujardeposito(g, "Sprite $900", spriteImg, exp.getDepositoSprite().size(), 290);
+        dibujardeposito(g, "Fanta $1000", fantaImg, exp.getDepositoFanta().size(), 350);
+        dibujardeposito(g, "Snicker $1200", snickersImg, exp.getDepositoSnickers().size(), 410);
+        dibujardeposito(g, "Super8 $700", super8Img, exp.getDepositoSuper8().size(), 470);
 
 }}

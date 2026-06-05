@@ -28,15 +28,15 @@ public class PanelPrincipal extends JPanel {
         expPanel = new PanelExpendedor(100, 50,exp);
         com = new PanelComprador(600, 50,exp);
         setLayout(null);
-        crearBotonMoneda("$100", 800, 100, 100);
-        crearBotonMoneda("$500", 800, 140, 500);
-        crearBotonMoneda("$1000", 800, 180, 1000);
-        crearBotonMoneda("$1500", 800, 220, 1500);
-        crearBotonProducto("Coca Cola", 650, 100, TipoProducto.COCACOLA,1400);
-        crearBotonProducto("Sprite", 650, 140, TipoProducto.SPRITE,900);
-        crearBotonProducto("Fanta", 650, 180, TipoProducto.FANTA,1000);
-        crearBotonProducto("Snickers", 650, 220, TipoProducto.SNICKERS,1200);
-        crearBotonProducto("Super8", 650, 260, TipoProducto.SUPER8,700);
+        crearBotonMoneda("$100", 820, 100, 100);
+        crearBotonMoneda("$500", 820, 140, 500);
+        crearBotonMoneda("$1000", 820, 180, 1000);
+        crearBotonMoneda("$1500", 820, 220, 1500);
+        crearBotonProducto("Coca Cola", 680, 100, TipoProducto.COCACOLA, 1400);
+        crearBotonProducto("Sprite", 680, 140, TipoProducto.SPRITE, 900);
+        crearBotonProducto("Fanta", 680, 180, TipoProducto.FANTA, 1000);
+        crearBotonProducto("Snickers", 680, 220, TipoProducto.SNICKERS, 1200);
+        crearBotonProducto("Super8", 680, 260, TipoProducto.SUPER8, 700);
 }
     private JButton crearBotonProducto(String nombre, int x, int y, TipoProducto tipo,int precio) {
         JButton boton = new JButton(nombre);

@@ -41,9 +41,9 @@ public class PanelComprador {
     }
     private void dibujarProductoInventario(Graphics g, String nombre, Image img, int posX, int posY) {
         if (nombre.equals("Snickers") || nombre.equals("Super8")) {
-            g.drawImage(img, posX, posY + 25, 45, 20, null);
+            g.drawImage(img, posX, posY + 25, 35, 15, null);
         } else {
-            g.drawImage(img, posX, posY, 30, 55, null);
+            g.drawImage(img, posX, posY, 22, 40, null);
         }
     }
     private Image obtenerImagenProducto(String nombre) {
@@ -58,8 +58,8 @@ public class PanelComprador {
     }
     private void dibujarMonedas(Graphics g, Image moneda, int cantidad, int posX, int posY) {
         for (int i = 0; i < cantidad; i++) {
-            int fila = i / 5;
-            int columna = i % 5;
+            int fila = i / 8;
+            int columna = i % 8;
             g.drawImage(moneda,
                     posX + columna * 25,
                     posY + fila * 25,
@@ -79,8 +79,8 @@ public class PanelComprador {
         g.setColor(Color.BLUE);
         g.fillRect(x, y, 400, 600);
         g.setColor(Color.WHITE);
-        g.drawString("COMPRADOR", x + 140, y + 30);
-        g.drawString("Monedero", x + 150, y + 270);
+        g.drawString("COMPRADOR", x + 155, y + 30);
+        g.drawString("Monedero", x + 165, y + 270);
         g.drawRect(x + 60, y + 290, 280, 90);
         int monedas500 = saldo / 500;
         int resto = saldo % 500;
@@ -89,10 +89,13 @@ public class PanelComprador {
         dibujarMonedas(g, moneda500Img, monedas500, x + 120, y + 300);
         g.drawString("$100", x + 70, y + 355);
         dibujarMonedas(g, moneda100Img, monedas100, x + 120, y + 340);
-        g.drawString("Inventario", x + 150, y + 420);
-        g.drawRect(x + 60, y + 440, 280, 110);
+        g.drawString("Inventario", x + 165, y + 420);
+        g.drawRect(x + 60, y + 440, 280, 150);
         for (int i = 0; i < inventario.size(); i++) {
             String nombre = inventario.get(i);
-            dibujarProductoInventario(g, nombre, obtenerImagenProducto(nombre), x + 75 + i * 50, y + 465);
-        }}
+            int fila = i / 8;
+            int columna = i % 8;
+            dibujarProductoInventario(g, nombre, obtenerImagenProducto(nombre), x + 65 + columna * 33, y + 450 + fila * 50);
+        }
+        }
     }
