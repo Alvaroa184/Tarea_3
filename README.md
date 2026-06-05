@@ -8,6 +8,6 @@ Tarea de interfaz grafica maquina expendedora
 - Felipe Alexis Sepulveda Vasquez
 
 - ## Captura de pantalla
-- <img width="1374" height="868" alt="image" src="https://github.com/user-attachments/assets/8f70f700-037d-4ec1-b031-dccf385b35ed" />
+<img width="1145" height="767" alt="{3406E296-7ABE-4009-B21B-245CD2FA0A47}" src="https://github.com/user-attachments/assets/bcdf0e41-8dee-4b7c-83ab-c1b0c58c8643" />
 
 ## Diagrama UML
