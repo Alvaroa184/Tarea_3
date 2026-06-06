@@ -8,75 +8,81 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-         System.out.println("prueba 1:");
+        System.out.println("prueba 1:");
         Expendedor exp = new Expendedor(0);
+        Comprador comp1 = new Comprador();
+        Moneda m1 = comp1.seleccionarmoneda(1500);
         try {
-            Comprador c = new Comprador(new Moneda1500(), TipoProducto.COCACOLA, exp);
-
-            System.out.println("tomaste: " + c.queBebiste());
-            System.out.println("tu vuelto es: " + c.cuantoVuelto());
-
+            exp.comprarProducto(m1, TipoProducto.COCACOLA);
+            comp1.recogerProducto(exp);
         } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-
         } catch (PagoInsuficienteException e) {
             System.out.println(e.getMessage());
-
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
-        exp=new Expendedor(6);
-         System.out.println();
-         System.out.println(("prueba 2:"));
-        try {
-            Comprador c = new Comprador(new Moneda1500(), TipoProducto.COCACOLA, exp);
 
-            System.out.println("tomaste una: " + c.queBebiste());
-            System.out.println("tu vuelto es: " + c.cuantoVuelto());
+        while (comp1.recogerVuelto(exp) != null);
 
-        } catch (PagoIncorrectoException e) {
-            System.out.println(e.getMessage());
-
-        } catch (PagoInsuficienteException e) {
-            System.out.println(e.getMessage());
-
-        } catch (NoHayProductoException e) {
-            System.out.println(e.getMessage());
-        }
         System.out.println();
-         System.out.println("prueba 3:");
+        System.out.println(("prueba 2:"));
+
+        exp = new Expendedor(6);
+        Comprador comp2 = new Comprador();
+
+        Moneda m2 = comp2.seleccionarmoneda(1500);
         try {
-        Comprador c = new Comprador(null, TipoProducto.COCACOLA, exp);
+            exp.comprarProducto(m2, TipoProducto.COCACOLA);
+            Producto p = comp2.recogerProducto(exp);
+            if (p != null) {
+                System.out.println("tomaste una: " + p.getSabor());
+            }
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("tomaste una: " + c.queBebiste());
-        System.out.println("tu vuelto es: " + c.cuantoVuelto());
+        int vueltoRecogido = 0;
+        Moneda monedaVuelto;
+        while ((monedaVuelto = comp2.recogerVuelto(exp)) != null) {
+            vueltoRecogido += monedaVuelto.getValor();
+        }
+        System.out.println("Vuelto recogido: " + vueltoRecogido);
 
-    } catch (PagoIncorrectoException e) {
-        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("prueba 3:");
 
-    } catch (PagoInsuficienteException e) {
-        System.out.println(e.getMessage());
+        try {
+            exp.comprarProducto(null, TipoProducto.COCACOLA);
+        } catch (PagoIncorrectoException e) {
+            System.out.println(e.getMessage());
+        } catch (PagoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (NoHayProductoException e) {
+            System.out.println(e.getMessage());
+        }
 
-    } catch (NoHayProductoException e) {
-        System.out.println(e.getMessage());
-    }
         System.out.println();
         System.out.println("prueba 4:");
+
+        Comprador comp4 = new Comprador();
+        Moneda m4 = comp4.seleccionarmoneda(100);
+
         try {
-            Comprador c = new Comprador(new Moneda100(), TipoProducto.COCACOLA, exp);
-
-            System.out.println("tomaste una: " + c.queBebiste());
-            System.out.println("tu vuelto es: " + c.cuantoVuelto());
-
+            exp.comprarProducto(m4, TipoProducto.COCACOLA);
         } catch (PagoIncorrectoException e) {
             System.out.println(e.getMessage());
-
         } catch (PagoInsuficienteException e) {
             System.out.println(e.getMessage());
-
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage());
         }
+        while (comp4.recogerVuelto(exp) != null);
+
         System.out.println();
         System.out.println("prueba 5:");
 

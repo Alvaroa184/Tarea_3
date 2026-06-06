@@ -33,9 +33,7 @@ public class Comprador {
     public Moneda recogerVuelto(Expendedor exp){
         Moneda m = exp.getVuelto();
         if (m!=null) {
-            if (m!=null) {
-                monedero.add(m);
-            }
+            monedero.add(m);
         }
         return m;
     }
@@ -57,7 +55,15 @@ public class Comprador {
     }
 
     public String queBebiste() {
-        return sonido; //
+        return sonido;
+    }
+
+    public Deposito<Moneda> getMonedero() {
+        return monedero;
+    }
+
+    public Deposito<Producto> getInventario() {
+        return inventario;
     }
 
 }
