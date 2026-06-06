@@ -37,7 +37,9 @@ public class PanelPrincipal extends JPanel {
         crearBotonProducto("Fanta", 680, 180, TipoProducto.FANTA, 1000);
         crearBotonProducto("Snickers", 680, 220, TipoProducto.SNICKERS, 1200);
         crearBotonProducto("Super8", 680, 260, TipoProducto.SUPER8, 700);
-}
+
+        configurarBotonVuelto();
+    }
     private JButton crearBotonProducto(String nombre, int x, int y, TipoProducto tipo,int precio) {
         JButton boton = new JButton(nombre);
         boton.setBounds(x, y, 120, 30);
@@ -75,6 +77,28 @@ public class PanelPrincipal extends JPanel {
         });
         add(boton);
         return boton;
+    }
+
+    private void configurarBotonVuelto() {
+        JButton botonVuelto = new JButton("Recoger Vuelto");
+        botonVuelto.setBounds(680, 310, 100, 30);
+        botonVuelto.addActionListener(e -> {
+            org.logica.Moneda m = exp.getVuelto();
+            if (m!=null) {
+                saldo+=m.getValor();
+                if (vuelto>=m.getValor()) {
+                    vuelto-=m.getValor();
+                } else {
+                    vuelto = 0;
+                }
+                repaint();
+            } else {
+                vuelto = 0;
+                repaint();
+                JOptionPane.showMessageDialog(this, "No queda más vuelto en el Expendedor.");
+            }
+        });
+        add(botonVuelto);
     }
 
     /**

@@ -35,6 +35,15 @@ public class Deposito<T> {
             return null;
         }
     }
+
+    public T remove(int i) {
+        if (i>=0 && i<lista.size()) {
+            return lista.remove(i);
+        } else {
+            return null;
+        }
+    }
+
     public int size(){
         return lista.size();
     }

@@ -4,47 +4,60 @@ package org.logica;
  * Simula a un cliente interactuando con la máquina expendedora, ademas de guardar el valor del vuelto.
  */
 public class Comprador {
-    private int vuelto;
+    private Deposito<Moneda> monedero;
+    private Deposito<Producto> inventario;
     private String sonido;
 
-    /**
-     * Intenta realizar una compra en el expendedor indicado.
-     * @param m Moneda que usara para pagar.
-     * @param tipo El producto seleccionado.
-     * @param exp La maquina expendedora en la cual se realizara la operacion.
-     * @throws PagoIncorrectoException Si la moneda entregada es null (No ingreso ninguna).
-     * @throws PagoInsuficienteException Si no hay stock disponible.
-     * @throws NoHayProductoException Si el valor de la moneda no alcanza a pagar el valor del producto.
-     */
-    public Comprador(Moneda m, TipoProducto tipo, Expendedor exp)
-            throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+    public Comprador(){
+        monedero = new Deposito<>();
+        inventario = new Deposito<>();
 
-        exp.comprarProducto(m, tipo);
+        monedero.add(new Moneda1500());
+        monedero.add(new Moneda1000());
+        monedero.add(new Moneda500());
+        monedero.add(new Moneda500());
+        monedero.add(new Moneda100());
+        monedero.add(new Moneda100());
+        monedero.add(new Moneda100());
+    }
 
+    public Moneda seleccionarmoneda(int valor) {
+        for (int i = 0; i<monedero.size(); i++) {
+            if (monedero.getElemento(i).getValor()==valor) {
+                return monedero.remove(i);
+            }
+        }
+        return null;
+    }
+
+    public Moneda recogerVuelto(Expendedor exp){
+        Moneda m = exp.getVuelto();
+        if (m!=null) {
+            if (m!=null) {
+                monedero.add(m);
+            }
+        }
+        return m;
+    }
+
+    public Producto recogerProducto(Expendedor exp) {
         Producto p = exp.getProducto();
-
         if (p != null) {
-            sonido = p.getSabor();
+            inventario.add(p);
         }
-
-        Moneda vueltomoneda;
-        while ((vueltomoneda = exp.getVuelto()) != null) {
-            vuelto += vueltomoneda.getValor();
-        }
+        return p;
     }
 
-    /**
-     * Obtiene la cantidad que el comprador recibio de vuelto.
-     * @return El vuelto total.
-     */
-    public int cuantoVuelto() {
-        return vuelto;
+    public int totalMonedero() {
+        int total = 0;
+        for (int i = 0; i<monedero.size(); i++) {
+            total+=monedero.getElemento(i).getValor();
+        }
+        return total;
     }
 
-    /** Registra el sabor.
-     * @return El sabor de lo consumido.
-     */
     public String queBebiste() {
-        return sonido;
+        return sonido; //
     }
+
 }
