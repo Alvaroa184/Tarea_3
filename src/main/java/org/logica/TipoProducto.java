@@ -4,11 +4,36 @@ package org.logica;
  * Define los productos disponibles en la máquina y sus respectivos precios.
  */
 public enum TipoProducto {
-    COCACOLA(1100),
-    SPRITE(900),
-    FANTA(1000),
-    SNICKERS(500),
-    SUPER8(300);
+    COCACOLA(1400) {
+        @Override
+        public Producto crearProducto() {
+            return new CocaCola();
+        }
+    },
+    SPRITE(900) {
+        @Override
+        public Producto crearProducto() {
+            return new Sprite();
+        }
+    },
+    FANTA(1000) {
+        @Override
+        public Producto crearProducto() {
+            return new Fanta();
+        }
+    },
+    SNICKERS(1200) {
+        @Override
+        public Producto crearProducto() {
+            return new Snickers();
+        }
+    },
+    SUPER8(700) {
+        @Override
+        public Producto crearProducto() {
+            return new Super8();
+        }
+    };
 
     private int precio;
 
@@ -27,4 +52,6 @@ public enum TipoProducto {
     public int getPrecio() {
         return precio;
     }
+
+    public abstract Producto crearProducto();
 }

@@ -29,14 +29,11 @@ public class Expendedor {
         productoComprado= null;
         depositoCompra = new Deposito<>();
 
-        for (int i = 0; i < numProductos; i++) {
-            depositoCoca.add(new CocaCola());
-            depositoSprite.add((new Sprite()));
-            depositoFanta.add(new Fanta());
-            depositoSnickers.add(new Snickers());
-            depositoSuper8.add(new Super8());
-        }
-
+        comprobarYrellenar(depositoCoca, TipoProducto.COCACOLA, numProductos);
+        comprobarYrellenar(depositoSprite, TipoProducto.SPRITE, numProductos);
+        comprobarYrellenar(depositoFanta, TipoProducto.FANTA, numProductos);
+        comprobarYrellenar(depositoSnickers, TipoProducto.SNICKERS, numProductos);
+        comprobarYrellenar(depositoSuper8, TipoProducto.SUPER8, numProductos);
     }
 
     /**
@@ -83,15 +80,38 @@ public class Expendedor {
         }
 
         int diferencia = moneda.getValor() - precio;
+
+        while (diferencia >= 500) {
+            depositoVuelto.add(new Moneda500());
+            diferencia -= 500;
+        }
+
         while (diferencia >= 100) {
             depositoVuelto.add(new Moneda100());
             diferencia -= 100;
         }
         productoComprado =producto;
         depositoCompra.add(moneda);
-
-        return ;
     }
+
+    private void comprobarYrellenar(Deposito<Producto> deposito, TipoProducto tipo, int cantidad) {
+        if (deposito.size() == 0) {
+            for (int i = 0; i < cantidad; i++) {
+                deposito.add(tipo.crearProducto());
+            }
+        }
+    }
+
+    public void rellenarDepositosVacios() {
+        int stockRelleno = 6;
+
+        comprobarYrellenar(depositoCoca, TipoProducto.COCACOLA, stockRelleno);
+        comprobarYrellenar(depositoSprite, TipoProducto.SPRITE, stockRelleno);
+        comprobarYrellenar(depositoFanta, TipoProducto.FANTA, stockRelleno);
+        comprobarYrellenar(depositoSnickers, TipoProducto.SNICKERS, stockRelleno);
+        comprobarYrellenar(depositoSuper8, TipoProducto.SUPER8, stockRelleno);
+    }
+
     public Producto getProducto() {
         Producto elegido= productoComprado;
         productoComprado =null;
