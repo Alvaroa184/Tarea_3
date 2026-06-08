@@ -45,23 +45,36 @@ public class PanelPrincipal extends JPanel {
         boton.setBounds(x, y, 120, 30);
         boton.addActionListener(e -> {
             try {
-                if(saldo<precio) {
+                if (saldo < precio) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente");
                     return;
                 }
-                exp.comprarProducto(new Moneda1500(), tipo);
+
+                Moneda monedapago = null;
+                if (precio <= 500 && saldo >= 500) {
+                    monedapago = new Moneda500();
+                    saldo -= 500;
+                } else if (precio <= 1000 && saldo >= 1000) {
+                    monedapago = new Moneda1000();
+                    saldo -= 1000;
+                } else if (precio <= 1500 && saldo >= 1500) {
+                    monedapago = new Moneda1500();
+                    saldo -= 1500;
+                }
+
+                exp.comprarProducto(monedapago, tipo);
                 inventario.add(nombre);
-                vuelto =saldo-precio;
-                saldo =0;
+
+                vuelto += (monedapago.getValor() - precio);
                 repaint();
                 JOptionPane.showMessageDialog(this, "Producto Comprado");
-            } catch (PagoInsuficienteException ex){
+            } catch (PagoInsuficienteException ex) {
                 JOptionPane.showMessageDialog(this, "Pago insuficiente");
             } catch (NoHayProductoException ex) {
-                JOptionPane.showMessageDialog(this,"No hay stock de este producto");
-            }catch (PagoIncorrectoException ex){
-                JOptionPane.showMessageDialog(this,"Debe ingresar dinero");
-            }catch (Exception ex){
+                JOptionPane.showMessageDialog(this, "No hay stock de este producto");
+            } catch (PagoIncorrectoException ex) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar dinero");
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
@@ -83,19 +96,23 @@ public class PanelPrincipal extends JPanel {
         JButton botonVuelto = new JButton("Recoger Vuelto");
         botonVuelto.setBounds(680, 310, 100, 30);
         botonVuelto.addActionListener(e -> {
-            org.logica.Moneda m = exp.getVuelto();
-            if (m!=null) {
-                saldo+=m.getValor();
-                if (vuelto>=m.getValor()) {
-                    vuelto-=m.getValor();
+            if (vuelto == 0) {
+                JOptionPane.showMessageDialog(this, "No tienes vuelto pendiente");
+                return;
+            }
+            Moneda m=exp.getVuelto();
+            if (m != null) {
+                saldo += m.getValor();
+                if (vuelto >= m.getValor()) {
+                    vuelto -= m.getValor();
                 } else {
-                    vuelto = 0;
+                    vuelto=0;
                 }
                 repaint();
             } else {
-                vuelto = 0;
+                vuelto=0;
                 repaint();
-                JOptionPane.showMessageDialog(this, "No queda más vuelto en el Expendedor.");
+                JOptionPane.showMessageDialog(this, "Error: El Expendedor se quedo sin monedas fisicas para dar el vuelto");
             }
         });
         add(botonVuelto);
