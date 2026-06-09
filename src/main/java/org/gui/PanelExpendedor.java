@@ -38,21 +38,28 @@ public class PanelExpendedor {
         moneda100Img = new ImageIcon("src/main/java/org/gui/moneda.png").getImage();
         moneda500Img = new ImageIcon("src/main/java/org/gui/moneda500.png").getImage();
     }
-    private void dibujardeposito(Graphics g, String nombre, Image img,int cantidad,int posicion_y) {
-        g.setColor(Color.black);
-        g.drawRect(x+20,y+posicion_y,170,55);
-        g.drawString(nombre,x+25,y+posicion_y+15);
-        for (int i = 0; i<cantidad; i++) {
-            int posicion_x= x+25+i*25;
-            int imagenY= y+posicion_y+20;
-            if (nombre.equals("Snicker")||nombre.equals("Super8")) {
-                g.drawImage(img,posicion_x,imagenY+10,35,15,null);
-            }
-            else{
-                g.drawImage(img,posicion_x,imagenY,22,32,null);
+    private void dibujardeposito(Graphics g, String nombre, Image img, int cantidad, int posicion_y) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(new Color(173, 216, 230, 60));
+        g2.fillRoundRect(x + 20, y + posicion_y, 170, 55, 10, 10);
+        g2.setColor(new Color(18, 19, 21, 150));
+        g2.setStroke(new BasicStroke(2));
+        g2.drawRoundRect(x + 20, y + posicion_y, 170, 55, 10, 10);
+        g2.dispose();
+        g.setColor(Color.BLACK);
+        g.drawString(nombre, x + 25, y + posicion_y + 15);
+        for (int i = 0; i < cantidad; i++) {
+            int posicion_x = x + 25 + i * 25;
+            int imagenY = y + posicion_y + 20;
+            if (nombre.contains("Snicker") || nombre.contains("Super8")) {
+                g.drawImage(img, posicion_x, imagenY + 10, 35, 15, null);
+            } else {
+                g.drawImage(img, posicion_x, imagenY, 22, 32, null);
             }
         }
     }
+
     private void dibujarMonedas(Graphics g, Image moneda, int cantidad, int posX, int posY) {
         for (int i = 0; i < cantidad; i++) {
             int fila = i / 5;
@@ -90,10 +97,11 @@ public class PanelExpendedor {
      * @param vuelto vuelto disponible
      */
     public void dibujar(Graphics g, int saldo,int vuelto) {
-        g.setColor(Color.RED);
+        g.setColor(new Color(200, 40, 40));
         g.fillRect(x, y, 400, 600);
         g.setColor(Color.BLACK);
         g.drawRect(x, y, 400, 600);
+        g.setFont(g.getFont().deriveFont(Font.BOLD, 14f));
         g.drawString("EXPENDEDOR", x + 140, y + 30);
         g.drawString("Stock de productos", x+30, y+60);
         g.drawString("CocaCola: "+exp.getDepositoCoca().size(),x+30,y+90);
@@ -109,8 +117,15 @@ public class PanelExpendedor {
         int monedas100 = resto / 100;
         dibujarMonedas(g, moneda500Img, monedas500, x + 250, y + 155);
         dibujarMonedas(g, moneda100Img, monedas100, x + 250, y + 220);
-        g.setColor(Color.black);
-        g.drawRect(x + 220, y + 380, 160, 140);
+        Graphics2D g2e = (Graphics2D) g.create();
+        g2e.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2e.setColor(new Color(173, 216, 230, 60));
+        g2e.fillRoundRect(x + 220, y + 380, 160, 140, 10, 10);
+        g2e.setColor(new Color(24, 24, 26, 150));
+        g2e.setStroke(new BasicStroke(2));
+        g2e.drawRoundRect(x + 220, y + 380, 160, 140, 10, 10);
+        g2e.dispose();
+        g.setColor(Color.BLACK);
         g.drawString("Entrega", x + 270, y + 400);
 
         if (exp.getProductoComprado() != null) {
