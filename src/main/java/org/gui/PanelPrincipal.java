@@ -93,8 +93,8 @@ public class PanelPrincipal extends JPanel {
     }
 
     private void configurarBotonVuelto() {
-        JButton botonVuelto = new JButton("Recoger Vuelto");
-        botonVuelto.setBounds(680, 310, 100, 30);
+        JButton botonVuelto = new JButton("Vuelto");
+        botonVuelto.setBounds(820, 260, 100, 30);
         botonVuelto.addActionListener(e -> {
             if (vuelto == 0) {
                 JOptionPane.showMessageDialog(this, "No tienes vuelto pendiente");

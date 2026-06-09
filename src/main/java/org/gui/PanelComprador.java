@@ -76,7 +76,7 @@ public class PanelComprador {
      * @param inventario lista de productos del comprador
      */
     public void dibujar(Graphics g, int saldo, ArrayList<String> inventario) {
-        g.setColor(Color.BLUE);
+        g.setColor(new Color(40, 80, 160));
         g.fillRect(x, y, 400, 600);
         g.setColor(Color.WHITE);
         g.drawString("COMPRADOR", x + 155, y + 30);
