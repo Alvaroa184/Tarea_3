@@ -8,6 +8,9 @@ abstract public class Moneda implements Comparable<Moneda> {
     private static int registro = 1000;
     private int serie;
 
+    private int x;
+    private int y;
+
     /**
      * Constructor base de Moneda que asigna un número de serie único,
      * utilizando un registro estático compartido.
@@ -29,6 +32,19 @@ abstract public class Moneda implements Comparable<Moneda> {
      * @return El valor de la moneda.
      */
     public abstract int getValor();
+
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
     /**
      * Compara el valor de esta moneda con otra proporcionada para determinar su orden.

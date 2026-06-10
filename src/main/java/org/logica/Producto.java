@@ -8,6 +8,9 @@ public abstract class Producto {
     private int serie;
     private TipoProducto tipo;
 
+    private int x;
+    private int y;
+
     /**
      * Constructor que define el tipo de producto.
      * @param tipo El identificador del tipo de producto y su precio.
@@ -37,5 +40,18 @@ public abstract class Producto {
      */
     public TipoProducto getTipo() {
         return tipo;
+    }
+
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
